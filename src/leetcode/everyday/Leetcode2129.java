@@ -1,6 +1,6 @@
 package leetcode.everyday;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,6 @@ public class Leetcode2129 {
         String s = "L hV";
         System.out.println(capitalizeTitle(s));
     }
-    @Test
     public static  String capitalizeTitle(String title) {
         //大小写变换
         //如果单词的长度为 1 或者 2 ，所有字母变成小写。
