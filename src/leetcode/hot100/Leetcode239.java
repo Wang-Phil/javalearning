@@ -1,8 +1,6 @@
 package leetcode.hot100;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @version 1.0
@@ -46,7 +44,28 @@ public class Leetcode239 {
     public static int[] maxSlidingWindow(int[] nums, int k) {
         //采用单调队列的方式可以简化时间复杂度
         int n = nums.length;
+        //创建双端队列
+        Deque<Integer> deque = new ArrayDeque<Integer>();
         int ans[] = new int[n - k + 1];     //n-k+1为返回数组的长度
+        //在未形成窗口的时候
+        for (int i = 0; i < k; i++) {
+            while(!deque.isEmpty() && deque.peekLast() < nums[i]) {
+                deque.removeLast();
+            }
+            deque.addLast(nums[i]);
+        }
+        ans[0] = deque.peekFirst();
+        //形成窗口后
+        for (int i = k; i < nums.length; i++) {
+            if(deque.peekFirst() == nums[i-k]){
+                deque.removeFirst();
+            }
+            while(!deque.isEmpty() && deque.peekLast() < nums[i]) {
+                deque.removeLast();
+            }
+            deque.addLast(nums[i]);
+            ans[i-k+1] = deque.peekFirst();
+        }
         return ans;
     }
 
