@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class Leetcode416 {
     public static void main(String[] args) {
-
+        System.out.println(canPartition1(new int[]{1,5,11,5}));
     }
     //分割等和子集，采用0-1背包问题进行求解
     //方法1，记忆化搜索
@@ -41,4 +41,25 @@ public class Leetcode416 {
         memo[i][j] = result ? 1 : 0;
         return result;
     }
+
+    //方法2
+    //由递推转换为dp数组形式
+    public static boolean canPartition1(int[] nums) {
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        if (sum % 2 != 0) return false;
+        sum /= 2;
+        boolean[][] dp = new boolean[nums.length + 1][sum + 1];
+        dp[0][0] = true;
+        for(int i = 0; i < nums.length; i++){
+            int x = nums[i];
+            for(int j = 0; j <= sum; j++){
+                dp[i+1][j] = j >= x  && dp[i][j-x] || dp[i][j];
+            }
+        }
+        return dp[nums.length][sum];
+    }
+
 }
