@@ -42,7 +42,7 @@ public class Reflection02 {
     //反射机制优化
     public static void m3() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
         Class cls = Class.forName("JavaEE.chapter17.Cat");
-        Object o = cls.newInstance();
+        Object o = cls.getDeclaredConstructor().newInstance();
         Method hi = cls.getMethod("hi");
         hi.setAccessible(true);//在反射调用方法时，取消访问检查
         long start = System.currentTimeMillis();

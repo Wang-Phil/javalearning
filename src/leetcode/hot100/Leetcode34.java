@@ -9,12 +9,12 @@ import java.util.Arrays;
  */
 public class Leetcode34 {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(searchRange(new int[]{5,7,7,8,8,10}, 8)));
+        System.out.println(Arrays.toString(searchRange(new int[]{2,2}, 3)));
     }
     public static int[] searchRange(int[] nums, int target) {
         int first = lower_bound(nums, target);
         System.out.println(first);
-        if(nums.length == 0 || nums[first] != target) return new int[]{-1, -1};
+        if(nums.length == first || nums[first] != target) return new int[]{-1, -1};
         int end = lower_bound(nums, target+1);
         return new int[]{first, end - 1};
     }
