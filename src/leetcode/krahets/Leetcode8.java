@@ -47,5 +47,6 @@ public class Leetcode8 {
             ans = ans * 10 + chars[j] - '0';
         }
         return sign * ans;
+
     }
 }
