@@ -20,7 +20,7 @@ public class Leetcode297 {
     }
 }
 //二叉树的序列化和反序列化
-public class Codec {
+class Codec {
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
