@@ -27,8 +27,9 @@ public class Leetcode494 {
         if (start == nums.length) {
             if(target == 0)
                 count++;
-        }
+        }else{
             backTracking(nums, start + 1, target - nums[start]);
             backTracking(nums, start + 1, target + nums[start]);
+        }
     }
 }
