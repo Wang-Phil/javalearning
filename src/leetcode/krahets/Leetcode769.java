@@ -19,6 +19,6 @@ public class Leetcode769 {
     }
     //最多能完成排序的块
     public int maxChunksToSorted(int[] arr) {
-
+        return 10;
     }
 }
