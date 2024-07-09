@@ -23,7 +23,7 @@ public class MC0318 {
     }
 }
 
-class Main {
+class Main1 {
 
     public static void main(String[] args) {
 
