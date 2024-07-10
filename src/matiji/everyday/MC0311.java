@@ -18,29 +18,51 @@ public class MC0311 {
         Scanner input = new Scanner(System.in);
         // code here
         //从键盘中获取输入
+        int check[] = new int[501];
         String list[] = input.nextLine().split(" ");
-        List<Integer> ans = new ArrayList<Integer>();
+        int maxPower = 0;
+        int size = 8;
         for (int i = 0; i < list.length; i++) { //当前备战席
-            ans.add(Integer.parseInt(list[i]));
+            int num = Integer.parseInt(list[i]);
+            check[num]++;
+            if(check[num] == 3){
+                check[num] = 0;
+                check[num * 10]++;
+                maxPower = Math.max(maxPower, num*10);
+                size -= 2;
+            }
         }
         int n = input.nextInt();            //补充的序列的长度
         int arr[] =  new int[n];
         for (int i = 0; i < n; i++) {       //补充顺序
             arr[i] = input.nextInt();
         }
-        int enemy = input.nextInt();        //敌人的战力
-        //模拟战棋
-        int i = 0;
-        while (i < n) {
-            int j = i;
-            if(j < n - 2 && ans.get(j) == ans.get(j + 1) && ans.get(j + 2) == ans.get(j + 1)) {
-                int num = ans.get(j);
-                ans.remove(j);
-                ans.remove(j + 1);
-                ans.remove(j + 2);
-                ans.add(num * 10);
+        for (int i = 0; i < n; i++) {
+            int num = arr[i];
+            if(check[num] == 2){
+                check[num] = 0;
+                maxPower = Math.max(maxPower, num*10);
+                size -= 2;
+                if(check[num * 10] == 2){
+                    check[num * 10] = 0;
+                    maxPower = Math.max(maxPower, num*100);
+                    check[num * 100]++;
+                    size -= 2;
+                }else{
+                    check[num * 10]++;
+                }
+            }else{
+                if(size < 8){
+                    check[num]++;
+                    size += 1;
+                }
             }
-            i++;
+        }
+        int enemy = input.nextInt();        //敌人的战力
+        if(maxPower > enemy){
+            System.out.println("YES YES YES");
+        }else{
+            System.out.println("NO NO NO");
         }
         input.close();
     }
