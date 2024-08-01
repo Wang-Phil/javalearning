@@ -23,7 +23,7 @@ public class Leetcode3111 {
 
     }
     //覆盖所有点的最少矩形数目
-    public int minRectanglesToCoverPoints(int[][] points, int w) {
+         public int minRectanglesToCoverPoints(int[][] points, int w) {
         Arrays.sort(points, (a,b)->a[0]-b[0]);          //x从小到大进行排序
         int x2 = -1;
         int ans = 0;
