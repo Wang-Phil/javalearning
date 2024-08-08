@@ -14,9 +14,15 @@ public class Leetcode3131 {
 
     }
     //找出与数组相加的整数
+    public int min(int[] nums) {
+        int num = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            num = Math.min(num, nums[i]);
+        }
+        return num;
+    }
+
     public int addedInteger(int[] nums1, int[] nums2) {
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-        return nums2[0] - nums1[0];
+        return min(nums2) - min(nums1);
     }
 }
