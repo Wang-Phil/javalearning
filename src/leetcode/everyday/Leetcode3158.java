@@ -1,5 +1,6 @@
 package leetcode.everyday;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 /*
@@ -19,6 +20,7 @@ public class Leetcode3158 {
     public int duplicateNumbersXOR(int[] nums) {
         int ans = 0;
         HashSet<Integer> set = new HashSet<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if(set.contains(nums[i])){
                 ans ^= nums[i];

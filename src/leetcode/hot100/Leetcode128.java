@@ -15,23 +15,24 @@ public class Leetcode128 {
     }
 
     public static int longestConsecutive(int[] nums) {
-        //hash表
-        if (nums.length == 0) return 0;
-        int max = 1;
+        // 思路，先全部放到hashset当中，再判断前一个数字是否存在
         HashSet<Integer> set = new HashSet<>();
-        for (int x : nums) {
-            set.add(x);
+        for(int num : nums){
+            set.add(num);
         }
-        for (int x : nums) {
-            if (!set.contains(x - 1)) {
-                int currentNum = x;
-                int maxlen = 1;
-                while (set.contains(currentNum + 1)) {
-                    currentNum++;
-                    maxlen++;
-                }
-                max = Math.max(max, maxlen);
+        int max = 1;
+        int cnt = 1;
+        // 细节二：遍历集合
+        for(int num : set){
+            // 细节三，看num-1是否存在
+            if(set.contains(num-1)){
+                continue;
             }
+            cnt = num;
+            while (set.contains(cnt+1)){
+                cnt++;
+            }
+            max = Math.max(max,cnt - num + 1);
         }
         return max;
     }

@@ -11,8 +11,14 @@ import java.util.*;
  */
 public class Leetcode49 {
     public static void main(String[] args) {
-        String[] strings = {"eat","tea","tan","ate","nat","bat"};
-        System.out.println(groupAnagrams(strings));
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        String[] strings = input.split(",");
+        for (int i = 0; i < strings.length; i++) {
+            strings[i] = strings[i].trim(); // 去除多余的空格
+        }
+        System.out.println(Arrays.toString(strings));
+        System.out.println(groupAnagrams1(strings));
     }
 /*
     public static List<List<String>> groupAnagrams(String[] strs) {
@@ -30,6 +36,19 @@ public class Leetcode49 {
     }
 
  */
+    public static List<List<String>> groupAnagrams1(String[] strs) {
+        Map<String, List<String>> ans = new HashMap<>();
+        for (String s : strs) {
+            char[] chars = s.toCharArray();
+            Arrays.sort(chars);
+            String sorted = new String(chars);
+            List<String> list = ans.getOrDefault(sorted, new ArrayList<>());
+            list.add(s);
+            ans.put(sorted, list);
+        }
+        return new ArrayList<>(ans.values());
+    }
+
     public static List<List<String>> groupAnagrams(String[] strs) {
         //方法二、数组存储计数
         Map<String, ArrayList<String>> map = new HashMap<>();

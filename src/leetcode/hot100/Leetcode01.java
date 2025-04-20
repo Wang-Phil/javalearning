@@ -1,7 +1,6 @@
 package leetcode.hot100;
 
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @version 1.0
@@ -12,20 +11,26 @@ import java.util.HashMap;
  */
 public class Leetcode01 {
     public static void main(String[] args) {
-        int nums[] = {3, 2, 4};
-        int target = 6;
+        // 改造，从键盘中获取输入
+        int target;
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        int nums[] = new int[num];
+        for (int i = 0; i < num; i++) {
+            nums[i] = sc.nextInt();
+        }
+        target = sc.nextInt();
         System.out.println(Arrays.toString(twoSum(nums, target)));
     }
 
     public static int[] twoSum(int[] nums, int target) {
-        //改进一次for循环即可
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
         for(int i = 0; i < nums.length; i++){
-            if(hashMap.containsKey(nums[i])){
-                return new int[]{hashMap.get(nums[i]),i};
+            if(map.containsKey(target - nums[i])){
+                return new int[]{map.get(target - nums[i]), i};
             }
-            hashMap.put(target-nums[i], i);
+            map.put(nums[i], i);
         }
-        return new int[]{};
+        return new int[0];
     }
 }
