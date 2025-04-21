@@ -1,7 +1,5 @@
 package JavaEE.chapter13.generic;
 
-import javafx.beans.binding.ObjectExpression;
-
 import java.util.ArrayList;
 import java.util.List;
 

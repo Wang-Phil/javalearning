@@ -1,6 +1,5 @@
 package JavaEE.chatper02;
 
-import com.sun.beans.editors.ByteEditor;
 //引用包的语法：import+包的名字
 import java.util.Scanner;       //只是引用一个类Scanner
 import java.util.*;             //引用java.util的所有包

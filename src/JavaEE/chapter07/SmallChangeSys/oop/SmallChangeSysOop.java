@@ -1,7 +1,5 @@
 package JavaEE.chapter07.SmallChangeSys.oop;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;

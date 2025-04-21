@@ -43,7 +43,7 @@ public class Leetcode15 {
 }
 
 
-class Solution {
+class Solution2 {
     public List<List<Integer>> threeSum(int[] nums) {
         int len=nums.length;
         List<List<Integer>> lists=new ArrayList<List<Integer>>();

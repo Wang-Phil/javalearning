@@ -1,6 +1,6 @@
 package JavaEE.chapter13.junit;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * @version 1.0
